@@ -73,11 +73,11 @@ export class ErrorBoundary extends Component<Props, State> {
     return { hasError: true, error };
   }
 
-  handleReload = () => {
+  handleReload = (): void => {
     this.setState({ hasError: false, error: null });
   };
 
-  render() {
+  render(): ReactNode {
     if (!this.state.hasError) {
       return this.props.children;
     }

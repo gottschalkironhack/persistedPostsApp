@@ -26,16 +26,16 @@ interface UsePostsReturn {
   toggleFavorite: (post: Post) => void;
 }
 
-const ITEMS_PER_PAGE = 10;
+const ITEMS_PER_PAGE: number = 10;
 
 const postsMatchingQuery = (posts: Post[], query: string): Post[] => {
   if (!query.trim()) return posts;
-  const lower = query.toLowerCase();
-  return posts.filter((post) => post.title.toLowerCase().includes(lower));
+  const lower: string = query.toLowerCase();
+  return posts.filter((post: Post): boolean => post.title.toLowerCase().includes(lower));
 };
 
 const postsForPage = (posts: Post[], page: number): Post[] => {
-  const start = (page - 1) * ITEMS_PER_PAGE;
+  const start: number = (page - 1) * ITEMS_PER_PAGE;
   return posts.slice(start, start + ITEMS_PER_PAGE);
 };
 
@@ -45,13 +45,13 @@ const pageCount = (totalItems: number): number =>
 export const usePosts = (): UsePostsReturn => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [favorites, setFavorites] = useState<FavoritePost[]>(storedFavorites);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isRefreshing, setIsRefreshing] = useState(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isRefreshing, setIsRefreshing] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [searchQuery, setSearchQuery] = useState("");
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [searchQuery, setSearchQuery] = useState<string>("");
 
-  const loadPosts = useCallback(async (isRefresh: boolean) => {
+  const loadPosts = useCallback(async (isRefresh: boolean): Promise<void> => {
     if (isRefresh) {
       setIsRefreshing(true);
     } else {
@@ -60,18 +60,18 @@ export const usePosts = (): UsePostsReturn => {
     setError(null);
 
     try {
-      const data = await fetchedPosts();
+      const data: Post[] = await fetchedPosts();
       setPosts(data);
 
-      setFavorites((prev) => {
-        const reconciled = reconciledFavorites(prev, data);
+      setFavorites((prev: FavoritePost[]): FavoritePost[] => {
+        const reconciled: FavoritePost[] = reconciledFavorites(prev, data);
         persistFavorites(reconciled);
         return reconciled;
       });
 
       setCurrentPage(1);
-    } catch (err) {
-      const message = err instanceof Error ? err.message : "An unexpected error occurred";
+    } catch (err: unknown) {
+      const message: string = err instanceof Error ? err.message : "An unexpected error occurred";
       setError(message);
     } finally {
       setIsLoading(false);
@@ -79,28 +79,28 @@ export const usePosts = (): UsePostsReturn => {
     }
   }, []);
 
-  useEffect(() => {
+  useEffect((): void => {
     loadPosts(false);
   }, [loadPosts]);
 
-  const refresh = useCallback(() => {
+  const refresh = useCallback((): void => {
     loadPosts(true);
   }, [loadPosts]);
 
-  const retry = useCallback(() => {
+  const retry = useCallback((): void => {
     loadPosts(false);
   }, [loadPosts]);
 
-  const toggleFavorite = useCallback((post: Post) => {
-    setFavorites((prev) => {
+  const toggleFavorite = useCallback((post: Post): void => {
+    setFavorites((prev: FavoritePost[]): FavoritePost[] => {
       const favoritePost: FavoritePost = { ...post, removedFromApi: false };
-      const updated = toggledFavorite(favoritePost, prev);
+      const updated: FavoritePost[] = toggledFavorite(favoritePost, prev);
       persistFavorites(updated);
       return updated;
     });
   }, []);
 
-  const handleSetSearchQuery = useCallback((query: string) => {
+  const handleSetSearchQuery = useCallback((query: string): void => {
     setSearchQuery(query);
     setCurrentPage(1);
   }, []);

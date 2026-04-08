@@ -1,3 +1,4 @@
+import { ReactElement } from "react";
 import styled, { keyframes } from "styled-components";
 import { usePosts } from "../hooks/usePosts";
 import { PostsTable } from "../components/PostsTable";
@@ -80,7 +81,7 @@ const ResultCount = styled.span`
   font-family: 'Press Start 2P', cursive;
 `;
 
-export const Posts = () => {
+export const Posts = (): ReactElement => {
   const {
     favorites,
     isLoading,

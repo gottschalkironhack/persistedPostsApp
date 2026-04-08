@@ -1,3 +1,4 @@
+import { ReactElement } from "react";
 import { Post, FavoritePost, Column } from "../types";
 import { Table } from "./Table";
 import { isFavorite } from "../helpers/storeFavorites";
@@ -41,7 +42,7 @@ const COLUMNS: Column<Post>[] = [
   { key: "title", header: "Title" },
 ];
 
-export const PostsTable = ({ posts, favorites, onToggleFavorite }: PostsTableProps) => (
+export const PostsTable = ({ posts, favorites, onToggleFavorite }: PostsTableProps): ReactElement => (
   <Table
     columns={COLUMNS}
     data={posts}

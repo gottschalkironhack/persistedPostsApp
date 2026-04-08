@@ -1,3 +1,4 @@
+import { ReactElement } from "react";
 import styled, { keyframes } from "styled-components";
 
 interface ErrorStateProps {
@@ -64,7 +65,7 @@ const RetryButton = styled.button`
   }
 `;
 
-export const ErrorState = ({ message, onRetry }: ErrorStateProps) => (
+export const ErrorState = ({ message, onRetry }: ErrorStateProps): ReactElement => (
   <Container role="alert">
     <Icon aria-hidden="true">GAME OVER</Icon>
     <Message>{message}</Message>

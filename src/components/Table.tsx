@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, ReactElement } from "react";
 import styled from "styled-components";
 import { Column } from "../types";
 
@@ -84,8 +84,8 @@ export const Table = <T,>({
   renderActions,
   emptyMessage = "No data available",
   rowHighlight,
-}: TableProps<T>) => {
-  const hasActions = !!renderActions;
+}: TableProps<T>): ReactElement => {
+  const hasActions: boolean = !!renderActions;
 
   return (
     <StyledTable>
@@ -115,7 +115,7 @@ export const Table = <T,>({
               {columns.map((col) => (
                 <Td key={String(col.key)}>{String(item[col.key])}</Td>
               ))}
-              {hasActions && <Td>{renderActions(item)}</Td>}
+              {hasActions && renderActions && <Td>{renderActions(item)}</Td>}
             </Tr>
           ))
         )}

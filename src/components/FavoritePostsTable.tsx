@@ -1,3 +1,4 @@
+import { ReactElement } from "react";
 import { FavoritePost, Column } from "../types";
 import { Table } from "./Table";
 import styled from "styled-components";
@@ -61,7 +62,7 @@ const COLUMNS: Column<FavoritePost>[] = [
   { key: "title", header: "Title" },
 ];
 
-export const FavoritePostsTable = ({ favorites, onToggleFavorite }: FavoritePostsTableProps) => (
+export const FavoritePostsTable = ({ favorites, onToggleFavorite }: FavoritePostsTableProps): ReactElement => (
   <Section>
     <SectionTitle>Favorite Posts</SectionTitle>
     <Table

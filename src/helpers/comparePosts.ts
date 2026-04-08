@@ -4,7 +4,7 @@ const postAsUpdatedFavorite = (
   favorite: FavoritePost,
   freshPostsById: Map<number, Post>
 ): FavoritePost => {
-  const freshPost = freshPostsById.get(favorite.id);
+  const freshPost: Post | undefined = freshPostsById.get(favorite.id);
 
   if (!freshPost) {
     return { ...favorite, removedFromApi: true };
@@ -19,7 +19,7 @@ export const reconciledFavorites = (
 ): FavoritePost[] => {
   if (currentFavorites.length === 0) return [];
 
-  const freshPostsById = new Map(freshPosts.map((p) => [p.id, p]));
+  const freshPostsById: Map<number, Post> = new Map(freshPosts.map((p: Post): [number, Post] => [p.id, p]));
 
-  return currentFavorites.map((fav) => postAsUpdatedFavorite(fav, freshPostsById));
+  return currentFavorites.map((fav: FavoritePost): FavoritePost => postAsUpdatedFavorite(fav, freshPostsById));
 };

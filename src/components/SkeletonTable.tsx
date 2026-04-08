@@ -1,3 +1,4 @@
+import { ReactElement } from "react";
 import styled, { keyframes } from "styled-components";
 
 interface SkeletonTableProps {
@@ -55,7 +56,7 @@ const HeaderBar = styled(SkeletonBar)`
   border-color: #9b6dff;
 `;
 
-export const SkeletonTable = ({ rows = 10, columns = 4 }: SkeletonTableProps) => (
+export const SkeletonTable = ({ rows = 10, columns = 4 }: SkeletonTableProps): ReactElement => (
   <StyledTable>
     <thead>
       <tr>

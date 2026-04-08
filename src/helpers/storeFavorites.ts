@@ -4,7 +4,7 @@ const STORAGE_KEY = "favorite-posts";
 
 export const storedFavorites = (): FavoritePost[] => {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
+    const raw: string | null = localStorage.getItem(STORAGE_KEY);
     if (!raw) return [];
     return JSON.parse(raw) as FavoritePost[];
   } catch {
@@ -24,14 +24,14 @@ export const toggledFavorite = (
   post: FavoritePost,
   currentFavorites: FavoritePost[]
 ): FavoritePost[] => {
-  const exists = currentFavorites.some((f) => f.id === post.id);
+  const exists: boolean = currentFavorites.some((f: FavoritePost): boolean => f.id === post.id);
 
   if (exists) {
-    return currentFavorites.filter((f) => f.id !== post.id);
+    return currentFavorites.filter((f: FavoritePost): boolean => f.id !== post.id);
   }
 
   return [...currentFavorites, post];
 };
 
 export const isFavorite = (postId: number, favorites: FavoritePost[]): boolean =>
-  favorites.some((f) => f.id === postId);
+  favorites.some((f: FavoritePost): boolean => f.id === postId);

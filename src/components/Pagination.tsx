@@ -1,3 +1,4 @@
+import { ReactElement } from "react";
 import styled from "styled-components";
 
 interface PaginationProps {
@@ -64,10 +65,10 @@ const visiblePageNumbers = (current: number, total: number): number[] => {
   return pages;
 };
 
-export const Pagination = ({ currentPage, totalPages, onPageChange }: PaginationProps) => {
+export const Pagination = ({ currentPage, totalPages, onPageChange }: PaginationProps): ReactElement | null => {
   if (totalPages <= 1) return null;
 
-  const pages = visiblePageNumbers(currentPage, totalPages);
+  const pages: number[] = visiblePageNumbers(currentPage, totalPages);
 
   return (
     <Container>

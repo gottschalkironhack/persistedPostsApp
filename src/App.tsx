@@ -1,3 +1,4 @@
+import { ReactElement } from "react";
 import { ErrorBoundary } from "./components/ErrorBoundary";
 import { Posts } from "./pages/Posts";
 import { createGlobalStyle } from "styled-components";
@@ -30,7 +31,7 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-export const App = () => (
+export const App = (): ReactElement => (
   <>
     <GlobalStyle />
     <ErrorBoundary>

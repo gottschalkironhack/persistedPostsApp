@@ -1,3 +1,4 @@
+import { ReactElement } from "react";
 import styled from "styled-components";
 
 interface SearchInputProps {
@@ -51,7 +52,7 @@ export const SearchInput = ({
   value,
   onChange,
   placeholder = "Search by title...",
-}: SearchInputProps) => (
+}: SearchInputProps): ReactElement => (
   <Container>
     <SearchIcon aria-hidden="true">&#x1F50D;</SearchIcon>
     <Input
