@@ -17,39 +17,49 @@ const Container = styled.div`
   justify-content: center;
   padding: 48px 24px;
   margin: 24px;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  background: #fef0ff;
+  border: 3px solid #3b2063;
+  box-shadow: 6px 6px 0px #3b2063;
   text-align: center;
 `;
 
 const Title = styled.h2`
-  font-size: 1.25rem;
-  color: #c92a2a;
-  margin: 0 0 12px;
+  font-size: 0.75rem;
+  color: #ff6b8a;
+  margin: 0 0 16px;
+  text-transform: uppercase;
 `;
 
 const Message = styled.p`
-  font-size: 0.95rem;
-  color: #495057;
-  margin: 0 0 20px;
+  font-size: 0.75rem;
+  color: #3b2063;
+  margin: 0 0 24px;
   max-width: 500px;
-  line-height: 1.5;
+  line-height: 1.8;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 700;
 `;
 
 const ReloadButton = styled.button`
-  padding: 10px 24px;
-  background: #228be6;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
+  padding: 12px 28px;
+  background: #a3f7bf;
+  color: #3b2063;
+  border: 3px solid #3b2063;
   cursor: pointer;
-  font-size: 0.9rem;
-  font-weight: 500;
-  transition: background 0.15s ease;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  box-shadow: 4px 4px 0px #3b2063;
+  transition: all 0.1s ease;
 
   &:hover {
-    background: #1c7ed6;
+    background: #7bed9f;
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px #3b2063;
+  }
+
+  &:active {
+    transform: translate(4px, 4px);
+    box-shadow: none;
   }
 `;
 

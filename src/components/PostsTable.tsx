@@ -10,19 +10,28 @@ interface PostsTableProps {
 }
 
 const FavoriteButton = styled.button<{ $isFavorite: boolean }>`
-  padding: 6px 12px;
-  border: 1px solid ${({ $isFavorite }) => ($isFavorite ? "#fcc419" : "#dee2e6")};
-  background: ${({ $isFavorite }) => ($isFavorite ? "#fff9db" : "#fff")};
-  color: ${({ $isFavorite }) => ($isFavorite ? "#e67700" : "#495057")};
-  border-radius: 4px;
+  padding: 6px 10px;
+  border: 2px solid #3b2063;
+  background: ${({ $isFavorite }) => ($isFavorite ? "#ffeaa7" : "#fef0ff")};
+  color: #3b2063;
   cursor: pointer;
-  font-size: 0.8rem;
-  font-weight: 500;
-  transition: all 0.15s ease;
+  font-size: 0.45rem;
+  text-transform: uppercase;
   white-space: nowrap;
+  box-shadow: ${({ $isFavorite }) =>
+    $isFavorite ? "inset 2px 2px 0 #f9ca24" : "3px 3px 0 #3b2063"};
+  transition: all 0.1s ease;
 
   &:hover {
-    background: ${({ $isFavorite }) => ($isFavorite ? "#ffec99" : "#f8f9fa")};
+    background: ${({ $isFavorite }) => ($isFavorite ? "#fdcb6e" : "#f3e5f5")};
+    transform: translate(1px, 1px);
+    box-shadow: ${({ $isFavorite }) =>
+      $isFavorite ? "inset 2px 2px 0 #e1b12c" : "2px 2px 0 #3b2063"};
+  }
+
+  &:active {
+    transform: translate(3px, 3px);
+    box-shadow: none;
   }
 `;
 

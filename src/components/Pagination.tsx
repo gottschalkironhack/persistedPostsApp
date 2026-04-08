@@ -10,35 +10,45 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 16px 0;
+  gap: 6px;
+  padding: 20px 0;
 `;
 
 const PageButton = styled.button<{ $active?: boolean }>`
-  padding: 8px 14px;
-  border: 1px solid ${({ $active }) => ($active ? "#228be6" : "#dee2e6")};
-  background: ${({ $active }) => ($active ? "#228be6" : "#fff")};
-  color: ${({ $active }) => ($active ? "#fff" : "#495057")};
-  border-radius: 6px;
+  padding: 8px 12px;
+  border: 3px solid #3b2063;
+  background: ${({ $active }) => ($active ? "#b088f9" : "#fef0ff")};
+  color: ${({ $active }) => ($active ? "#fff" : "#3b2063")};
   cursor: pointer;
-  font-size: 0.85rem;
-  font-weight: ${({ $active }) => ($active ? 600 : 400)};
-  transition: all 0.15s ease;
+  font-size: 0.5rem;
+  text-transform: uppercase;
+  box-shadow: ${({ $active }) =>
+    $active ? "inset 2px 2px 0 #8b5cf6" : "3px 3px 0 #3b2063"};
+  transition: all 0.1s ease;
 
   &:hover:not(:disabled) {
-    background: ${({ $active }) => ($active ? "#1c7ed6" : "#f1f3f5")};
+    background: ${({ $active }) => ($active ? "#9b6dff" : "#f3e5f5")};
+    transform: translate(1px, 1px);
+    box-shadow: ${({ $active }) =>
+      $active ? "inset 2px 2px 0 #7c3aed" : "2px 2px 0 #3b2063"};
+  }
+
+  &:active:not(:disabled) {
+    transform: translate(3px, 3px);
+    box-shadow: none;
   }
 
   &:disabled {
-    opacity: 0.5;
+    opacity: 0.4;
     cursor: not-allowed;
   }
 `;
 
 const PageInfo = styled.span`
-  font-size: 0.85rem;
-  color: #868e96;
-  padding: 0 8px;
+  font-size: 0.5rem;
+  color: #7c5a9b;
+  padding: 0 4px;
+  font-family: 'Press Start 2P', cursive;
 `;
 
 const visiblePageNumbers = (current: number, total: number): number[] => {

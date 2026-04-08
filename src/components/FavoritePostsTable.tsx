@@ -12,38 +12,46 @@ const Section = styled.section`
 `;
 
 const SectionTitle = styled.h2`
-  font-size: 1.25rem;
-  color: #212529;
+  font-size: 0.8rem;
+  color: #3b2063;
   margin: 0 0 16px;
-  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 `;
 
 const Badge = styled.span`
   display: inline-block;
-  padding: 2px 8px;
-  background: #ffe3e3;
-  color: #c92a2a;
-  border-radius: 4px;
-  font-size: 0.7rem;
-  font-weight: 600;
+  padding: 3px 8px;
+  background: #ff9ff3;
+  color: #3b2063;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.4rem;
+  border: 2px solid #3b2063;
   margin-left: 8px;
   vertical-align: middle;
+  text-transform: uppercase;
 `;
 
 const RemoveButton = styled.button`
-  padding: 6px 12px;
-  border: 1px solid #dee2e6;
-  background: #fff;
-  color: #c92a2a;
-  border-radius: 4px;
+  padding: 6px 10px;
+  border: 2px solid #3b2063;
+  background: #ff6b8a;
+  color: #fff;
   cursor: pointer;
-  font-size: 0.8rem;
-  font-weight: 500;
-  transition: all 0.15s ease;
+  font-size: 0.45rem;
+  text-transform: uppercase;
+  box-shadow: 3px 3px 0 #3b2063;
+  transition: all 0.1s ease;
 
   &:hover {
-    background: #ffe3e3;
-    border-color: #c92a2a;
+    background: #ee5a6f;
+    transform: translate(1px, 1px);
+    box-shadow: 2px 2px 0 #3b2063;
+  }
+
+  &:active {
+    transform: translate(3px, 3px);
+    box-shadow: none;
   }
 `;
 

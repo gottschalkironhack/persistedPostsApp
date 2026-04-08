@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { usePosts } from "../hooks/usePosts";
 import { PostsTable } from "../components/PostsTable";
 import { FavoritePostsTable } from "../components/FavoritePostsTable";
@@ -7,6 +7,11 @@ import { SkeletonTable } from "../components/SkeletonTable";
 import { ErrorState } from "../components/ErrorState";
 import { SearchInput } from "../components/SearchInput";
 
+const float = keyframes`
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+`;
+
 const PageContainer = styled.div`
   max-width: 960px;
   margin: 0 auto;
@@ -14,20 +19,26 @@ const PageContainer = styled.div`
 `;
 
 const Header = styled.header`
-  margin-bottom: 24px;
+  margin-bottom: 28px;
+  text-align: center;
 `;
 
 const Title = styled.h1`
-  font-size: 1.75rem;
-  color: #212529;
+  font-size: 1.1rem;
+  color: #3b2063;
   margin: 0 0 8px;
-  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  animation: ${float} 3s ease-in-out infinite;
+  text-shadow: 3px 3px 0 #c9a0dc, 6px 6px 0 rgba(59, 32, 99, 0.15);
 `;
 
 const Subtitle = styled.p`
-  font-size: 0.95rem;
-  color: #868e96;
+  font-size: 0.75rem;
+  color: #7c5a9b;
   margin: 0;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 700;
 `;
 
 const Toolbar = styled.div`
@@ -35,30 +46,38 @@ const Toolbar = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   flex-wrap: wrap;
 `;
 
 const RefreshButton = styled.button<{ $isRefreshing: boolean }>`
   padding: 10px 20px;
-  background: ${({ $isRefreshing }) => ($isRefreshing ? "#74c0fc" : "#228be6")};
-  color: #fff;
-  border: none;
-  border-radius: 6px;
+  background: ${({ $isRefreshing }) => ($isRefreshing ? "#c9a0dc" : "#a3f7bf")};
+  color: #3b2063;
+  border: 3px solid #3b2063;
   cursor: ${({ $isRefreshing }) => ($isRefreshing ? "not-allowed" : "pointer")};
-  font-size: 0.9rem;
-  font-weight: 500;
-  transition: background 0.15s ease;
-  opacity: ${({ $isRefreshing }) => ($isRefreshing ? 0.8 : 1)};
+  font-size: 0.55rem;
+  text-transform: uppercase;
+  box-shadow: ${({ $isRefreshing }) =>
+    $isRefreshing ? "inset 2px 2px 0 #b088f9" : "4px 4px 0 #3b2063"};
+  transition: all 0.1s ease;
 
   &:hover:not(:disabled) {
-    background: #1c7ed6;
+    background: #7bed9f;
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 #3b2063;
+  }
+
+  &:active:not(:disabled) {
+    transform: translate(4px, 4px);
+    box-shadow: none;
   }
 `;
 
 const ResultCount = styled.span`
-  font-size: 0.85rem;
-  color: #868e96;
+  font-size: 0.55rem;
+  color: #7c5a9b;
+  font-family: 'Press Start 2P', cursive;
 `;
 
 export const Posts = () => {

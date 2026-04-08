@@ -13,23 +13,27 @@ const Container = styled.div`
 
 const Input = styled.input`
   width: 100%;
-  padding: 10px 16px 10px 40px;
-  border: 1px solid #dee2e6;
-  border-radius: 6px;
-  font-size: 0.9rem;
-  background: #fff;
-  color: #333;
-  transition: border-color 0.15s ease;
+  padding: 10px 14px 10px 40px;
+  border: 3px solid #3b2063;
+  font-size: 0.85rem;
+  background: #fef0ff;
+  color: #3b2063;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 700;
   box-sizing: border-box;
+  box-shadow: 4px 4px 0px #3b2063;
+  transition: box-shadow 0.1s ease, transform 0.1s ease;
 
   &:focus {
     outline: none;
-    border-color: #228be6;
-    box-shadow: 0 0 0 3px rgba(34, 139, 230, 0.15);
+    background: #fff;
+    box-shadow: 2px 2px 0px #3b2063;
+    transform: translate(2px, 2px);
   }
 
   &::placeholder {
-    color: #adb5bd;
+    color: #b088f9;
+    font-weight: 600;
   }
 `;
 
@@ -38,7 +42,7 @@ const SearchIcon = styled.span`
   left: 12px;
   top: 50%;
   transform: translateY(-50%);
-  color: #adb5bd;
+  color: #b088f9;
   font-size: 0.95rem;
   pointer-events: none;
 `;

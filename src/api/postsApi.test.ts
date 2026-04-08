@@ -12,7 +12,7 @@ describe("fetchedPosts", () => {
   });
 
   it("returns parsed posts on successful response", async () => {
-    vi.spyOn(global, "fetch").mockResolvedValueOnce({
+    vi.spyOn(globalThis, "fetch").mockResolvedValueOnce({
       ok: true,
       json: async () => MOCK_POSTS,
     } as Response);
@@ -26,7 +26,7 @@ describe("fetchedPosts", () => {
   });
 
   it("throws on non-ok response", async () => {
-    vi.spyOn(global, "fetch").mockResolvedValueOnce({
+    vi.spyOn(globalThis, "fetch").mockResolvedValueOnce({
       ok: false,
       status: 500,
       statusText: "Internal Server Error",
@@ -38,7 +38,7 @@ describe("fetchedPosts", () => {
   });
 
   it("propagates network errors", async () => {
-    vi.spyOn(global, "fetch").mockRejectedValueOnce(new Error("Network failure"));
+    vi.spyOn(globalThis, "fetch").mockRejectedValueOnce(new Error("Network failure"));
 
     await expect(fetchedPosts()).rejects.toThrow("Network failure");
   });
