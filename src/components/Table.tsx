@@ -6,7 +6,7 @@ interface TableProps<T> {
   columns: Column<T>[];
   data: T[];
   keyExtractor: (item: T) => string | number;
-  renderActions?: (item: T) => ReactNode;
+  rowActionContent?: (item: T) => ReactNode;
   emptyMessage?: string;
   rowHighlight?: (item: T) => boolean;
 }
@@ -81,11 +81,11 @@ export const Table = <T,>({
   columns,
   data,
   keyExtractor,
-  renderActions,
+  rowActionContent,
   emptyMessage = "No data available",
   rowHighlight,
 }: TableProps<T>): ReactElement => {
-  const hasActions: boolean = !!renderActions;
+  const showActionsColumn: boolean = !!rowActionContent;
 
   return (
     <StyledTable>
@@ -96,13 +96,13 @@ export const Table = <T,>({
               {col.header}
             </Th>
           ))}
-          {hasActions && <Th $width="100px">Actions</Th>}
+          {showActionsColumn && <Th $width="100px">Actions</Th>}
         </tr>
       </thead>
       <tbody>
         {data.length === 0 ? (
           <tr>
-            <EmptyRow colSpan={columns.length + (hasActions ? 1 : 0)}>
+            <EmptyRow colSpan={columns.length + (showActionsColumn ? 1 : 0)}>
               {emptyMessage}
             </EmptyRow>
           </tr>
@@ -115,7 +115,7 @@ export const Table = <T,>({
               {columns.map((col) => (
                 <Td key={String(col.key)}>{String(item[col.key])}</Td>
               ))}
-              {hasActions && renderActions && <Td>{renderActions(item)}</Td>}
+              {showActionsColumn && rowActionContent && <Td>{rowActionContent(item)}</Td>}
             </Tr>
           ))
         )}

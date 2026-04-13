@@ -53,6 +53,8 @@ const PageInfo = styled.span`
 `;
 
 const visiblePageNumbers = (current: number, total: number): number[] => {
+  // delta is the number of pages to show before and after the current page
+  // we show 2 pages before and after the current page
   const delta = 2;
   const start = Math.max(1, current - delta);
   const end = Math.min(total, current + delta);

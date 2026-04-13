@@ -46,7 +46,7 @@ describe("Table", () => {
     expect(screen.getByText("Nothing here")).toBeInTheDocument();
   });
 
-  it("renders actions column when renderActions provided", () => {
+  it("renders actions column when rowActionContent provided", () => {
     const onAction = vi.fn();
 
     render(
@@ -54,7 +54,7 @@ describe("Table", () => {
         columns={columns}
         data={items}
         keyExtractor={(i) => i.id}
-        renderActions={(item) => (
+        rowActionContent={(item) => (
           <button onClick={() => onAction(item.id)}>Action</button>
         )}
       />

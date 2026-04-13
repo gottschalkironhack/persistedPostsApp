@@ -64,6 +64,7 @@ export const usePosts = (): UsePostsReturn => {
       setPosts(data);
 
       setFavorites((prev: FavoritePost[]): FavoritePost[] => {
+        // reconcile the favorites with the posts
         const reconciled: FavoritePost[] = reconciledFavorites(prev, data);
         persistFavorites(reconciled);
         return reconciled;

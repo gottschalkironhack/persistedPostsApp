@@ -48,7 +48,7 @@ export const PostsTable = ({ posts, favorites, onToggleFavorite }: PostsTablePro
     data={posts}
     keyExtractor={(post) => post.id}
     emptyMessage="No posts match your search"
-    renderActions={(post) => (
+    rowActionContent={(post: Post): ReactElement => (
       <FavoriteButton
         $isFavorite={isFavorite(post.id, favorites)}
         onClick={() => onToggleFavorite(post)}

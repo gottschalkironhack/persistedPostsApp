@@ -71,7 +71,7 @@ export const FavoritePostsTable = ({ favorites, onToggleFavorite }: FavoritePost
       keyExtractor={(post) => post.id}
       emptyMessage="No favorite posts yet. Mark posts as favorites from the table above."
       rowHighlight={(post) => post.removedFromApi}
-      renderActions={(post) => (
+      rowActionContent={(post: FavoritePost): ReactElement => (
         <>
           {post.removedFromApi && <Badge>Removed from API</Badge>}
           <RemoveButton
