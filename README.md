@@ -1,6 +1,6 @@
 # Posts App
 
-A React + TypeScript application that fetches posts from JSONPlaceholder and displays them in a paginated, searchable table with favorite management.
+A React + TypeScript application that fetches posts from JSONPlaceholder and displays them in a paginated, searchable table with favorite posts management.
 
 ## Setup
 
